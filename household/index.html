@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+
+        <title>家計簿</title>
+    </head>
+    <body>
+        <div class="container">
+            <!--「container」で一つのまとまり-->
+            <div class="row">
+                <!-- 「row」のタグ内で一つのまとまり。横に並べる-->
+                <div class="col-md-12">
+                    <!-- 12ラインのうち、9ライン使って描写-->
+
+                    <div class="view">
+                     <h1>入力フォーム</h1>
+                        <div class= "row">
+                            <div class = "col-md-2">
+                                <input type="text" class = 'form-control inputMonth'placeholder="月">
+                            </div>
+                            <div class = "col-md-2">
+                                <input type="text" class = 'form-control inputDay'placeholder="日付">
+                            </div>
+                            <div class = "col-md-3">
+                                <input type="text" class = 'form-control inputMoney' placeholder="金額" required>
+                            </div>
+                            <div class = "col-md-3">
+                                <input type="text" class = 'form-control inputWay' placeholder="用途">
+                            </div>
+                            <div class = "col-md-3">
+                                <select name="" class='form-control inputStatus'  >
+                                    <option value="">支出or収入</option>
+                                    <option value="0">支出</option>
+                                    <option value="1">収入</option>
+                                </select>
+                            </div>
+                            <div class = "col-md-2">
+                                <input type="text"class = 'form-control inputId'placeholder="id"readonly>
+                            </div>
+                            <hr>
+                        </div>
+                         
+                        <!--ボタン-->
+                        <button id="button" class="btn btn-success" onclick="stockcontroller.btnOnClick()">入力
+                            </button>
+                        <button id="button" class="btn btn-success" onclick="stockcontroller.btnReNew()">修正完了
+                            </button>
+                        <button id="button" class="btn btn-success" onclick="stockcontroller.btnClear()">入力欄消去
+                            </button>
+                        
+                        <!--フッター-->
+                        <div class="footer">
+                            <span class="count-todos"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row" id = "stock">
+                <!--左側-->
+                <div class="col-md-6">
+                    <div class="view">
+                        <h1>支出</h1>
+                        <ul id="spending" class="stockview">
+                            <li class="ui-state-default">
+                                <div >
+                                    データないよ
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--右側-->
+                <div class="col-md-6">
+                    <div class="view">
+                     <h1>収入</h1>
+                        <ul id="income" class="stockview">
+                            <li class="ui-state-default">
+                                <div >
+                                    入力ないよ
+                                </div>
+                            </li>
+                        </ul>
+                        <!--ここまで-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        
+        <script src = "app/utils/Utils.js"></script>
+        <script src="app/model/Stock.js"></script>
+        <script src="app/model/StockList.js"></script>
+        <script src="app/view/StockView.js"></script>
+        <script src = "app/service/ConnectionFactory.js"></script>
+        <script src = "app/dao/HouseHoldDao.js"></script>
+        <script src="app/controller/StockController.js"></script>
+        <script>
+            let stockcontroller = new StockController();
+
+        </script>
+    </body>
+    
+
+</html>
